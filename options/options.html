@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Attendance Nudges Settings</title>
+  <link rel="stylesheet" href="options.css">
+</head>
+<body>
+  <div class="container">
+    <header class="header">
+      <div class="brand">
+        <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="12" cy="12" r="10"></circle>
+          <polyline points="12 6 12 12 16 14"></polyline>
+        </svg>
+        <h1>Attendance Nudges</h1>
+      </div>
+      <p class="subtitle">Automated check-in and check-out reminder schedule for Odoo.</p>
+    </header>
+
+    <form id="settingsForm" class="form">
+      <!-- Odoo Instance Configuration -->
+      <section class="section">
+        <h2>Odoo Connection</h2>
+        <div class="form-group">
+          <label for="odooUrl">Odoo Instance URL</label>
+          <div class="input-with-btn">
+            <input type="url" id="odooUrl" placeholder="https://mycompany.odoo.com" required>
+            <button type="button" id="btnAutoDetect" class="btn secondary-btn">Auto-Detect Open Tab</button>
+            <button type="button" id="btnTestConnection" class="btn secondary-btn">Test Connection</button>
+          </div>
+          <p class="help-text">Uses your active Chrome Odoo session. No password required.</p>
+          <div id="connectionResult" class="connection-result hidden"></div>
+        </div>
+      </section>
+
+      <!-- Reminder Times -->
+      <section class="section">
+        <h2>Reminder Schedule</h2>
+        <div class="grid">
+          <div class="form-group">
+            <div class="label-with-toggle">
+              <label for="checkInTime">Check-in Reminder</label>
+              <input type="checkbox" id="checkInEnabled" class="toggle" checked>
+            </div>
+            <input type="time" id="checkInTime" value="10:00" required>
+            <p class="help-text">Alerts at 10:00 AM if you haven't checked in today.</p>
+          </div>
+
+          <div class="form-group">
+            <div class="label-with-toggle">
+              <label for="checkOutTime">Check-out Reminder</label>
+              <input type="checkbox" id="checkOutEnabled" class="toggle" checked>
+            </div>
+            <input type="time" id="checkOutTime" value="19:00" required>
+            <p class="help-text">Alerts at 7:00 PM if you are still checked in.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Working Days -->
+      <section class="section">
+        <h2>Active Days</h2>
+        <p class="help-text mb-2">Select working days for reminders:</p>
+        <div class="days-picker">
+          <label class="day-checkbox"><input type="checkbox" name="workingDay" value="1" checked> Mon</label>
+          <label class="day-checkbox"><input type="checkbox" name="workingDay" value="2" checked> Tue</label>
+          <label class="day-checkbox"><input type="checkbox" name="workingDay" value="3" checked> Wed</label>
+          <label class="day-checkbox"><input type="checkbox" name="workingDay" value="4" checked> Thu</label>
+          <label class="day-checkbox"><input type="checkbox" name="workingDay" value="5" checked> Fri</label>
+          <label class="day-checkbox"><input type="checkbox" name="workingDay" value="6"> Sat</label>
+          <label class="day-checkbox"><input type="checkbox" name="workingDay" value="0"> Sun</label>
+        </div>
+      </section>
+
+      <!-- Snooze Configuration -->
+      <section class="section">
+        <h2>Snooze Preset</h2>
+        <div class="form-group">
+          <label for="defaultSnooze">Default Snooze Duration</label>
+          <select id="defaultSnooze">
+            <option value="10">10 Minutes</option>
+            <option value="15">15 Minutes</option>
+            <option value="30">30 Minutes</option>
+            <option value="60">1 Hour</option>
+          </select>
+        </div>
+      </section>
+
+      <!-- Form Actions -->
+      <div class="form-actions">
+        <button type="submit" id="btnSave" class="btn primary-btn">Save Settings</button>
+        <div id="toastMessage" class="toast hidden">Settings saved.</div>
+      </div>
+    </form>
+  </div>
+
+  <script src="options.js"></script>
+</body>
+</html>
