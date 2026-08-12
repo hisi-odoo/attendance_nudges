@@ -1,45 +1,49 @@
-# Attendance Nudges
+<p align="center">
+  <img alt="Attendance Nudges" src="./assets/icon128.png" width="128" height="128"/>
+</p>
 
-A minimal, automated Chrome Extension (Manifest V3) that monitors your Odoo attendance status and reminds you to check in and check out at configured working hours.
+<h1 align="center">Attendance Nudges</h1>
 
----
+<p align="center">
+  <i>A tiny Chrome extension for people who somehow always forget to check in.</i> 😅
+</p>
 
-## Features
+**Attendance Nudges** is a simple Chrome extension for Odoo that reminds you when it's time to check in or check out. It checks your current attendance status and only nudges you when you actually need it.
 
-- **Morning Check-in Reminder**: Alerts you at your set morning time (default: `10:00 AM`) if you haven't checked in yet.
-- **Evening Check-out Reminder**: Alerts you at your set evening time (default: `07:00 PM`) if you are still checked in.
-- **Session-Based Authentication**: Uses your existing browser Odoo session cookies. Zero password storage required.
-- **Snooze Support**: Postpone reminders by 10m, 30m, or 1h directly from notification buttons or the extension popup.
-- **Auto-Suppression**: If you complete check-in/out before snooze expiry or on another device, pending alerts are automatically suppressed.
-- **Auto-Detect Odoo Tab**: One-click URL detection from open Odoo browser tabs across windows.
-- **Timezone Aware**: Accurately parses Odoo UTC timestamps into your local browser timezone.
-- **Minimal Raycast-Style Dark UI**: Clean, non-intrusive interface showing hours worked today, last check-in timestamp, and quick action controls.
+No separate login, no password storage -- just use your existing Odoo session and let it do its thing.
 
----
+## ✨ Features
 
-## Installation
+* **Check-in reminders** : Get a reminder if you haven't checked in by your usual start time.
+* **Check-out remindersr** : Get a reminder if you're still checked in when it's time to leave.
+* **Snooze it** : Not ready yet? Snooze the reminder for `10m`, `30m`, or `1h`.
+* **Knows when you're done** : Already checked in or out? It'll figure that out and leave you alone. 😌
+* **Finds your Odoo automatically** : Detects your Odoo URL from an open tab, so you don't have to type it in.
+* **Works with your timezone** : Handles Odoo's UTC timestamps and shows everything in your local time.
+* **Simple dark UI** : Shows the stuff you actually care about: attendance status, hours worked, and your last check-in.
 
-1. Download or clone this repository:
+## 🚀 Installation
+
+1. Clone the repository:
+
    ```bash
    git clone https://github.com/hisi-odoo/attendance-nudges.git
    ```
 
-2. Load into Google Chrome:
-   - Open Chrome and navigate to `chrome://extensions/`
-   - Enable **Developer mode** (toggle in top right)
-   - Click **Load unpacked**
-   - Select this unzipped / cloned folder directly!
+2. Open Chrome and go to `chrome://extensions/`.
+
+3. Turn on **Developer mode**.
+
+4. Click **Load unpacked**.
+
+5. Select the cloned `attendance-nudges` folder.
+
+6. That's it. The extension should now show up in Chrome.
+
+## 📜 License
+
+This project is licensed under the [MIT License](LICENSE).
 
 ---
 
-## How Odoo Integration Works
-
-The extension makes authenticated JSON-RPC calls directly to Odoo's built-in web endpoints:
-- **Status Retrieval**: `POST /hr_attendance/attendance_user_data`
-- **Toggle Action**: `POST /hr_attendance/systray_check_in_out`
-
----
-
-## License
-
-[MIT](LICENSE)
+<p align="center"> Built with ☕ and the pain of realizing at evening that you never checked in. <br/> <i>One less thing to forget during the workday.</i> </p>
